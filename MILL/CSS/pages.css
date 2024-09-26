@@ -180,7 +180,6 @@ footer {
         /* Center content within the container */
     }
     .map{
-        border: #f0f0f0 solid 3px;
         border-radius: 30px;
     }
   
@@ -192,10 +191,12 @@ footer {
     #callbtn {
         display: none;
     } 
+
 }
 
 @media (max-width: 480px) {
     body {
         background: url("../pages/home3.jpg");
     }
+  
 }
