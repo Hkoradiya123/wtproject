@@ -167,8 +167,22 @@ footer {
         background-color: #000000;
         color: #ffffff;
     }
+    .mcontainer {
 
+        margin: 10px;
+        padding: 50px;
     
+        /* border: 5px solid wheat; */
+        background-color: var(--body-background-color);
+        border-radius: 20px;
+        /* color: #d7dbd a; */
+        text-align: center;
+        /* Center content within the container */
+    }
+    .map{
+        border: #f0f0f0 solid 3px;
+        border-radius: 30px;
+    }
   
 @media (max-width: 768px) {
     body {
