@@ -146,6 +146,15 @@ footer {
     transform: translateX(-50px);
 }
 
+.border-primary {
+    --bs-border-opacity: 1;
+    border-color: rgb(141 114 81) !important;
+}
+
+.head-large-card {
+    color: #fff !important;
+    background-color: #8d7251;
+}
 /* Dark Theme */
     
 body.dark {
@@ -168,13 +177,14 @@ body.dark {
     }
 }
 
+
 body.dark header,
 body.dark footer {
-    background-color: rgba(33, 37, 41, 0.7);
+    background-color: rgba(85, 90, 95, 0.7);
 }
 
 body.dark .mcontainer {
-    background-color: rgba(33, 37, 41, 0.7);
+    background-color: rgba(85, 90, 95, 0.7);
 }
 
 body.dark #callbtn {
