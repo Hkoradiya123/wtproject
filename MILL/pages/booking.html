@@ -16,7 +16,7 @@
 
 </head>
 
-<body>
+<body ng-app="oilApp">
     <header>
         <div class="container">
             <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
@@ -38,6 +38,36 @@
                     <button id="callbtn"></button>
                 </div>
             </div>
+            <!-- Bootstrap JS (Optional) and AngularJS -->
+            <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+            <!-- AngularJS Library -->
+            <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+
+                <style>
+                    
+                      .form-group {
+                        margin-bottom: 15px;
+                      }
+                      label {
+                        display: block;
+                        margin-bottom: 5px;
+                      }
+                      input, select {
+                        width: 100%;
+                        padding: 8px;
+                        box-sizing: border-box;
+                      }
+                      button {
+                        padding: 10px 20px;
+                        background-color: blue;
+                        color: white;
+                        border: none;
+                        cursor: pointer;
+                      }
+                </style>
         </header>
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
 <div class="content">
@@ -45,8 +75,71 @@
 
 
 
-        </main>
-    </div>
+        <div ng-controller="OilController" class="mcontainer">
+<!-- Container for form with responsive classes -->
+<div class="mcontainer">
+    <h2 class="text-center mb-4">Buy Cooking Oil</h2>
+
+    <!-- Responsive form -->
+    <form ng-submit="submitForm()" class="row g-3">
+        <!-- Choose type (liters or kg) -->
+        <div class="form-group col-md-6">
+            <label for="type">Choose Type:</label>
+            <select class="form-control" id="type" ng-model="order.type" required>
+                <option value="liters">Liters - ₹195/L</option>
+                <option value="kg">Kilograms - ₹225/Kg</option>
+            </select>
+        </div>
+
+        <!-- Choose quantity -->
+        <div class="form-group col-md-6">
+            <label for="quantity">Choose Quantity:</label>
+            <select class="form-control" id="quantity" ng-model="order.quantity" required>
+                <option value="1">1</option>
+                <option value="5">5</option>
+                <option value="15">15</option>
+            </select>
+        </div>
+
+        <!-- Total price (full-width) -->
+        <div class="form-group col-12">
+            <label>Total Price: </label>
+            <p class="lead">₹{{ calculateTotalPrice() }}</p>
+        </div>
+
+        <!-- Name -->
+        <div class="form-group col-md-6">
+            <label for="name">Your Name:</label>
+            <input type="text" class="form-control" id="name" ng-model="order.name" required />
+        </div>
+
+        <!-- Email -->
+        <div class="form-group col-md-6">
+            <label for="email">Your Email:</label>
+            <input type="email" class="form-control" id="email" ng-model="order.email" required />
+        </div>
+
+        <!-- Phone (smaller and centered on PC, full width on mobile) -->
+        <div class="form-group col-md-4 col-12 offset-md-4">
+            <label for="phone">Your Phone:</label>
+            <input type="tel" class="form-control" id="phone" ng-model="order.phone" required />
+        </div>
+        <br>
+        <br>
+
+        <!-- Submit Button (center on mobile) -->
+        <div class="col-12 text-center">
+            <button type="submit" class="btn btn-primary btn-block">Submit</button>
+        </div>
+    </form>
+</div>
+
+        </div>
+            
+
+
+    </main>
+</div>
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
     
     <footer>
@@ -88,6 +181,54 @@
         </div>
     </footer>
     <script>document.querySelector("#checkbox").addEventListener("change", () => {document.body.classList.toggle("dark");});</script>
+
+<!-- Bootstrap JS (Optional) and AngularJS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<!-- AngularJS Library -->
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+
+<script>
+  // Define AngularJS app
+  var app = angular.module('oilApp', []);
+
+  // Controller for the form
+  app.controller('OilController', function($scope, $http) {
+    $scope.order = {
+      type: 'liters',
+      quantity: 1,
+      name: '',
+      email: '',
+      phone: ''
+    };
+
+    $scope.calculateTotalPrice = function() {
+      var pricePerLiter = 195;
+      var pricePerKg = 225;
+
+      if ($scope.order.type === 'liters') {
+        return $scope.order.quantity * pricePerLiter;
+      } else if ($scope.order.type === 'kg') {
+        return $scope.order.quantity * pricePerKg;
+      }
+    };
+
+    $scope.submitForm = function() {
+      var data = angular.copy($scope.order);
+
+      // Send data via AJAX
+      $http.post('your-server-endpoint-url', data)
+        .then(function(response) {
+          alert('Order submitted successfully!');
+          $scope.order = {};  // Clear form after submission
+        }, function(error) {
+          console.error('Error submitting form:', error);
+        });
+    };
+  });
+</script>
 </body>
 
 </html>
