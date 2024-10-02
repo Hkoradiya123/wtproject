@@ -104,7 +104,7 @@ footer {
     font-family: "Baloo Bhai 2", sans-serif;
     font-size: 18px;
     font-weight: bold;
-    padding: 10px 20px;
+    padding: 10px 10px;
     color: white;
     background-color: #3e583b;
     /* Dark green background */
@@ -209,20 +209,34 @@ footer {
      
     body.dark {
         color: #f0f0f0;
-        background-color: rgba(0, 0, 0, 0.7); /* Black overlay with 50% opacity */
+        background-color: rgba(0, 0, 0, 1); /* Black overlay with 50% opacity */
+        background: url("../pages/home-dark.jpg") no-repeat center center fixed;
+        background-size: cover;
+        display: flex;
+        flex-direction: column;
 
-        
-
+        @media (max-width: 768px) {
+            body {
+                background: url("../pages/home3.jpg");
+            }
+        }
+        @media (max-width: 480px) {
+            body {
+                background: url("../pages/home3.jpg");
+            } 
+        }
     }
     
-body.dark header,
-body.dark footer {
-    background-color: rgba(85, 90, 95, 0.7);
-}
 
-body.dark .mcontainer {
-    background-color: rgba(85, 90, 95, 0.7);
-}
+    body.dark header,
+    body.dark footer {
+        background-color: rgba(85, 90, 95, 0.7);
+    }
+    
+    body.dark .mcontainer {
+        background-color: rgba(85, 90, 95, 0.7);
+    }
+
     body.dark #callbtn {
         border: 3px solid #ffffff;
         background-color: #000000;
@@ -233,7 +247,7 @@ body.dark .mcontainer {
   
 @media (max-width: 768px) {
     body {
-        background: url("../pages/home3.jpg");
+        /* background: url("../pages/home3.jpg"); */
     }
 
     #callbtn {
@@ -261,7 +275,7 @@ body.dark .mcontainer {
 
 @media (max-width: 480px) {
     body {
-        background: url("../pages/home3.jpg");
+        /* background: url("../pages/home3.jpg"); */
     }
 
     .mcontainer {
