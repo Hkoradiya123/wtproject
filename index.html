@@ -8,19 +8,28 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhai+2:wght@400..800&display=swap" rel="stylesheet">
         <meta charset="UTF-8">
+        
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>home page</title>
         <link rel="stylesheet" href="MILL/bootstrap-5.3.3-dist/bootstrap.min.css">
         <link rel="stylesheet" href="MILL/CSS/index.css">
         <script src="https://kit.fontawesome.com/836a943e18.js"crossorigin="anonymous"></script>
-        <script src="/MILL/JS/theme.js"></script>
-        <script src="/MILL/JS/PAGES.JS">
-            if(theme == "dark" ){
-                document.body.classList.toggle("dark");
-                localStorage.setItem("theme","dark")
-            }
-        </script>
+        <!-- <script src="/MILL/JS/theme.js"></script> -->
         <script>
+            document.addEventListener("DOMContentLoaded", () => {
+                const theme = localStorage.getItem("theme") || "light"; // Default to light if not set
+                if (theme === "dark") {
+                    document.body.classList.add("dark");
+                    document.querySelector("#checkbox").checked = true; // Check the toggle
+                }
+            
+                // Toggle theme on checkbox change
+                document.querySelector("#checkbox").addEventListener("change", () => {
+                    document.body.classList.toggle("dark");
+                    const currentTheme = document.body.classList.contains("dark") ? "dark" : "light";
+                    localStorage.setItem("theme", currentTheme);
+                });
+            });
             
         </script>
     </head>
@@ -43,7 +52,7 @@
                         <li><a href="MILL/pages/FAQ.html" class="nav-link px-2 text-white">FAQs</a></li>
                         <li><a href="MILL/pages/about.html" class="nav-link px-2 text-white">location</a></li>
 
-                    </ul>updt
+                    </ul>
                     <input type="checkbox" id="checkbox" class="checkbox" />
                     <label for="checkbox" class="toggle-theme">
                     <i class="fas fa-moon"></i>
@@ -122,7 +131,6 @@
                 </div>
             </div>
         </footer>
-        <script>document.querySelector("#checkbox").addEventListener("change", () => {document.body.classList.toggle("dark");});</script>
     </body>
 
     </html>
