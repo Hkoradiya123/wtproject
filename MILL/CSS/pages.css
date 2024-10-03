@@ -146,14 +146,16 @@ footer {
     transform: translateX(-50px);
 }
 
-.border-primary {
-    --bs-border-opacity: 1;
-    border-color: rgb(141 114 81) !important;
-}
+
 
 .head-large-card {
     color: #fff !important;
     background-color: #8d7251;
+}
+
+.text-secondary {
+    --bs-text-opacity: 1;
+    color: rgb(171 190 208) !important;
 }
 /* Dark Theme */
     
@@ -205,7 +207,7 @@ body.dark #callbtn {
     /* Center content within the container */
 }
 .map{
-    border-radius: 30px;
+    border-radius: 20px;
 }
 
 .btn-pricing-large {
