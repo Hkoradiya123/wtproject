@@ -152,7 +152,12 @@ footer {
     color: #fff !important;
     background-color: #8d7251;
 }
-
+.border-primary{
+    
+        --bs-border-opacity: 1;
+        border-color: rgb(141 114 81) !important;
+    
+}
 .text-secondary {
     --bs-text-opacity: 1;
     color: rgb(171 190 208) !important;
